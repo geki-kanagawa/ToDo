@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="ToDo" content="ToDoリスト">
+        <title>ToDo</title>
+        <script
+            src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous">
+        </script>
+        <link href='lib/main.css' rel='stylesheet' />
+        <script src='lib/main.js'></script>
+
+        <!-- css -->
+        <style>
+            #container{
+                margin: 2rem;
+            }
+            #wrap{
+                width: 70%;
+                height: 70%;
+                margin: auto;
+            }
+            .fc-scrollgrid-sync-table tr td:hover{
+                background-color: #ccc !important;
+            }
+        </style>
+        <!-- /css -->
+    </head>
+
+    <!-- body -->
+    <body>
+        <div id="container">
+            <div id="wrap">
+                <div id="calendar"></div>
+            </div>
+            
+        </div>
+    </body>
+    <!-- /body -->
+
+    <!-- js -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            //初期化
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            //日本語化
+            locale: 'ja',
+            //ヘッダーのタイトルとボタン
+            headerToolbar: {
+              left: 'prev',
+              center: 'title',
+              right: 'next'
+            },
+            //日付毎の初期化処理
+            dayCellContent: function(e){
+              //「日」を非表示にする
+              e.dayNumberText = e.dayNumberText.replace('日','');
+            },
+        });
+        calendar.render();
+        });
+        $(function() {
+
+        });
+    </script>
+    <!-- /js -->
+</html>
